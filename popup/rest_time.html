@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RestTime</title>
+  <link rel="stylesheet" href="rest_time.css">
+</head>
+<body>
+  <main class="popup-container">
+  
+	<!-- Pantalla principal de funcionament de l'extensió -->
+	<div id="mainView" class="view-section">
+	
+		<!-- Seccio superior: cronometre i configuracio -->
+		<header class="popup-header">
+		  <div class="timer-box" title="Cronòmetre">
+			<span id="timerDisplay" class="timer-display">05:00</span>
+		  </div>
+		  <button id="settingsBtn" class="icon-btn" title="Configuració">
+			<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			  <circle cx="12" cy="12" r="3"></circle>
+			  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+			</svg>
+		  </button>
+		</header>
+
+		<!-- Animacio fluid -->
+		<section class="fluid-stage">
+		  <canvas id="fluidCanvas" width="224" height="240"></canvas>
+		  <span id="activePresetLabel" class="preset-badge">Pausa Desenvolupament</span>
+		</section>
+
+		<!-- Preset i botons d'inici-->
+		<footer class="popup-controls">
+			<!-- Els elements es carreguen per JS -->
+			<select id="quickPresetSelect" class="preset-select"></select>
+
+		<!-- Botons Iniciar / Reiniciar -->
+		  <div class="action-buttons">
+			<button id="playPauseBtn" class="btn-primary" title="Iniciar / Pausar">
+			  <span id="playPauseText">Iniciar</span>
+			</button>
+			<button id="resetBtn" class="btn-secondary" title="Reiniciar">
+			  Reiniciar
+			</button>
+		  </div>
+		</footer>
+		
+	</div>
+	
+	<!-- Pantalla de configuració de l'extensió -->
+    <div id="settingsView" class="view-section hidden">
+      <header class="settings-header">
+        <h2 class="settings-title">Configuració</h2>
+      </header>
+
+      <!-- Presets -->
+      <section class="settings-block">
+        <label class="block-label">Presets</label>
+        <div class="preset-form-row1">
+          <input type="text" id="newPresetName" class="input-text" placeholder="Nom" maxlength="50">
+        </div>
+		<div class="preset-form-row2">
+          <input type="number" id="newPresetMinutes" class="input-number" placeholder="Min" min="1" max="60">
+          <input type="color" id="newPresetColor" class="input-color" value="#00d2ff" title="Color del fluid">
+          <button id="addPresetBtn" class="btn-add" title="Afegir preset">+</button>
+        </div>
+
+		<!-- Els elements es carreguen per JS -->
+        <ul id="presetsList" class="presets-list"></ul>
+      </section>
+
+      <!-- Idioma -->
+      <section class="settings-block">
+        <label for="languageSelect" class="block-label">Idioma</label>
+        <select id="languageSelect" class="preset-select">
+          <option value="ca">Català</option>
+          <option value="es">Espanyol</option>
+          <option value="en">Anglès</option>
+        </select>
+      </section>
+
+      <!-- Botons Acceptar / Cancel·lar -->
+      <footer class="action-buttons settings-footer">
+        <button id="saveSettingsBtn" class="btn-primary">Acceptar</button>
+        <button id="cancelSettingsBtn" class="btn-secondary">Cancel·lar</button>
+      </footer>
+    </div>
+	
+  </main>
+	<!-- Scripts de l'extensio -->
+    <script src="rest_time_variables.js"></script>
+    <script src="rest_time_utils.js"></script>
+    <script src="rest_time.js"></script>
+</body>
+</html>

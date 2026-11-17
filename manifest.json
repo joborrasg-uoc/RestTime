@@ -1,0 +1,39 @@
+{
+
+  "manifest_version": 3,
+  "name": "RestTime",
+  "description": "Permet establir períodes de descans i pauses programades entre tasques. Per a més informació, visiteu l'URL especificada a la secció 'homepage_url'.",
+  "version": "1.0",
+  "homepage_url": "https://github.com/joborrasg-uoc/RestTime",
+  "icons": {
+    "48": "icons/count_down_48.png"
+  },
+  "permissions": [
+	"storage",
+	"alarms",
+	"notifications"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "joborrasg@uoc.edu",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "action": {
+    "default_icon": "icons/count_down_48.png",
+    "default_title": "RestTime",
+    "default_popup": "popup/rest_time.html"
+  },
+  "background": {
+    "scripts": ["background/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["main.js"]
+    }
+  ]
+
+}
